@@ -2,15 +2,60 @@
 
 get_header(); ?>
 
+<style>
+	/* RYK ALLE STYLES OVER I CUSTOM.CSS */
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  border: solid 1px black;
+}
+/* style på grid-produktoversigt i mobile */
+#produktoversigt_container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
 
-<section id="produktoversigt"></section>
-<template>
-	<article class="produkt">
-		<p class="produkt_navn"></p>
-		<p class="pris"></p>
-		<img class="produktbillede" src="" alt="">
-	</article>
-</template>
+#produktoversigt{
+	grid-column: 1/3;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	}
+
+#alle_knap {
+      grid-column: 1/3;
+    }
+
+/* Style på produkt-boks i oversigt */
+.produkt_information {
+  position: absolute;
+}
+.produkt_navn,
+.produkt_pris {
+  color: black;
+}
+</style>
+
+
+<div id="produktoversigt_container">
+        <button id="alle_knap" class="filterknapper">Alle</button>
+        <button class="filterknapper">Hår</button>
+        <button class="filterknapper">Krop & hænder</button>
+        <button class="filterknapper">Rengøring</button>
+        <button class="filterknapper">Pakker</button>
+	
+	<section id="produktoversigt"></section>
+	<template id="enkelt_produkt">
+		<figure class="produkt">
+			<div class="produkt_information">
+            	<p class="produkt_navn"></p>
+            	<p class="produkt_pris"></p>
+          	</div>
+			<img class="produktbillede" src="" alt="">
+		</figure>
+	</template>
+</div>
 
 <script>
 // Her starter JS. console.log for at tjekke om der er forbindelse
@@ -43,7 +88,7 @@ function visProdukter(){
 produkter.forEach(produkt =>{
 	const klon = skabelon.cloneNode(true).content;
 	klon.querySelector(".produkt_navn").textContent = produkt.navn;
-	klon.querySelector(".pris").textContent = produkt.pris;
+	klon.querySelector(".produkt_pris").textContent = produkt.pris;
 	klon.querySelector(".produktbillede").src = produkt.billede[0].guid;
 	klon.querySelector(".produktbillede").alt = produkt.navn;
 	liste.appendChild(klon);

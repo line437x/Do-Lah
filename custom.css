@@ -1,6 +1,16 @@
 /* Her skrives alle styles ind */
-img {
+/* img {
   display: block;
-  width: 20rem;
+  width: 100%;
   height: auto;
-}
+  padding: 0;
+  border: solid 1px black;
+} */
+/* Style på produkt-boks i oversigt */
+/* .produkt_information {
+  position: absolute;
+} */
+/* .produkt_navn,
+.produkt_pris {
+  color: black;
+} */
