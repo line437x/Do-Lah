@@ -1,1 +1,6 @@
 /* Her skrives alle styles ind */
+img {
+  display: block;
+  width: 20rem;
+  height: auto;
+}
