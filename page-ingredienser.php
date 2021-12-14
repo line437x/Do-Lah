@@ -4,8 +4,12 @@ get_header(); ?>
 
 <style>
 	/* RYK ALLE STYLES OVER I CUSTOM.CSS */
-main{
-width: 90vw;
+main {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 1000px) 1fr;
+}
+main section {
+  grid-column: 2/3;
 }
 
 img {
@@ -14,12 +18,14 @@ img {
   height: auto;
   padding: 0;
 }
-p,
-h1,
-h2,
-h3,
-h4 {
-    font-family: "century gothic";
+
+
+#button {
+      background-color: black;
+      color: white;
+      border: solid 1px black;
+	  padding: 1rem;
+	  text-decoration-line: none;
     }
 
 /* style på grid-produktoversigt i mobile */
@@ -28,9 +34,10 @@ h4 {
 }
 
 #ingrediensoversigt{
-	grid-column: 1/2;
+	/* grid-column: 1/2; */
 	display: grid;
-	grid-template-columns: 1fr;
+	/* grid-template-columns: 1fr; */
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	}
 
 .ingrediens{
@@ -41,6 +48,7 @@ h4 {
 </style>
 
 <main>
+	<section>
 <div id="intro">
 	<h1>Ingredienser</h1>
 	<p id="indledende_tekst">Her finder du information og egenskaber for alle de ingredienser der indgår i Do Lah sæbebarer. Ønsker du at få oplyst om hvor de yderligere bliver brugt kan dette ses inde på de enkelt produkter. Her er allergener også oplyst.</p>
@@ -56,8 +64,10 @@ h4 {
 		<img class="ingrediensbillede" src="" alt="">
 	</figure>
 </template>
-<button href= https://lineberner.com/kea/2_semester/dolah/shop >Gå til shoppen</button>
-
+<div id="knapper">
+	<a id="button" href= "https://lineberner.com/kea/2_semester/dolah/shop" >Gå til shoppen</a>
+</div>
+</section>
 </main>
 
 

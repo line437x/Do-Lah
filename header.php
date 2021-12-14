@@ -18,8 +18,19 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<?php wp_head(); ?>
+	<!-- <link rel="stylesheet" href="custom.css" /> -->
+	<link rel="stylesheet" href="https://use.typekit.net/tig0ggs.css" />
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/custom.css">
 </head>
+
+<style>
+	.site-title a{
+		font-family:"HWT Arabesque";
+		text-decoration-line: none;
+		text-transform: none;
+		font-size: 2.5rem;
+	}
+</style>
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>

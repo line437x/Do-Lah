@@ -4,34 +4,40 @@ get_header(); ?>
 
 <style>
 	/* RYK ALLE STYLES OVER I CUSTOM.CSS */
-main{
-width: 90vw;
+main {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 1000px) 1fr;
+}
+main section {
+  grid-column: 2/3;
 }
 
-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  padding: 0;
-  border: solid 1px black;
+#indledning{
+display: grid;
+justify-content: center;
+padding-bottom: 2.5rem;
 }
-p,
-h1,
-h2,
-h3,
-h4 {
-    font-family: "century gothic";
-    }
+
+#indledning h1, #indledning p{
+	text-align: center;
+}
+
 /* style på grid-produktoversigt i mobile */
 #filtrerings_knapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
+#filter_knapper, #alle_knap{
+	background-color: white;
+	color: black;
+	border: solid 1px black;
+}
 
 #produktoversigt{
-	grid-column: 1/3;
+	/* grid-column: 1/3; */
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	/* grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
 	}
 
 #alle_knap {
@@ -39,6 +45,10 @@ h4 {
     }
 
 /* Style på produkt-boks i oversigt */
+.produkt{
+	cursor: pointer;
+}
+
 .produkt_information {
   position: absolute;
   padding: 0.5rem;
@@ -47,12 +57,28 @@ h4 {
 .produkt_pris {
   color: black;
 }
+@media (min-width: 700px) {
+	#produktoversigt{
+		grid-template-columns: 1fr 1fr 1fr;
+		}	
+	#indledning{
+		padding-bottom: 5rem;
+	}
+}
+@media (min-width: 1000px) {
+	#produktoversigt{
+		grid-template-columns: repeat(4, 1fr);
+		}	
+}
+
 </style>
 
 <main>
-<h1>Shop Do Lah</h1>
-<p>Lækre og økologiske sæbebarer som kan bruges af hele husstanden. Alle sæbebarer fra Do Lah kan bruges på både krop og hænder, og passer til alle hudtyper. </p>
-
+	<section>
+<article id="indledning">
+	<h1>Shop Do Lah</h1>
+	<p>Lækre og økologiske sæbebarer som kan bruges af hele husstanden. Alle sæbebarer fra Do Lah kan bruges på både krop og hænder, og passer til alle hudtyper. </p>
+</article>
 <nav id=filtrerings_knapper>
 	<button id="alle_knap" data-produkt="alle">Alle</button>
 </nav>
@@ -67,7 +93,7 @@ h4 {
 		<img class="produktbillede" src="" alt="">
 	</figure>
 </template>
-
+</section>
 </main>
 
 <script>
@@ -99,7 +125,7 @@ async function getJson(){
 // Her oprettes filtreringsknapperne ud fra dynamisk indhold. Her ud fra kategorien "produkttype"
 function opretKnapper(){
 	produktType.forEach(type=>{
-		document.querySelector("#filtrerings_knapper").innerHTML += `<button class="filter" data-produkt="${type.id}">${type.name}</button>`
+		document.querySelector("#filtrerings_knapper").innerHTML += `<button id="filter_knapper" class="filter" data-produkt="${type.id}">${type.name}</button>`
 	})
 	// Kald funktion 
 	addEventListenersToButtons(); 

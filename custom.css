@@ -1,16 +1,79 @@
 /* Her skrives alle styles ind */
-/* img {
+/* ---------------   Generelle regler   ---------------*/
+main {
+  width: 90vw;
+}
+img {
   display: block;
   width: 100%;
   height: auto;
   padding: 0;
   border: solid 1px black;
-} */
-/* Style på produkt-boks i oversigt */
-/* .produkt_information {
-  position: absolute;
-} */
-/* .produkt_navn,
-.produkt_pris {
-  color: black;
+}
+
+figure {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: balboa-plus-fill, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+p {
+  font-family: nimbus-sans, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: clamp(1.1rem, 1.0429rem + 0.2438vw, 1.5rem);
+  max-width: 60ch;
+  line-height: 1.5rem;
+}
+/* ---------------   Knapper   ---------------*/
+button {
+  font-family: balboa-plus-fill, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: black;
+  color: white;
+  border: solid 1px black;
+  padding: 0.5rem;
+}
+
+/* ---------------   Single-view   ---------------*/
+/* #produkt_container {
+  display: grid;
+}
+
+#produkt_navn_single,
+#tekst_1,
+#tekst_2,
+#tekst_3,
+#køb,
+#tekst_4 {
+  border: solid 1px black;
+  padding: 0.5rem;
+}
+
+#produkt_navn_single {
+  text-align: center;
+}
+
+#køb {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+}
+
+#antal {
+  display: flex;
+}
+
+#antal p {
+  border: solid 1px black;
+  width: 3rem;
+  padding: 0.5rem;
 } */
