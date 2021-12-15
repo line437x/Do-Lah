@@ -26,11 +26,18 @@ padding-bottom: 2.5rem;
 #filtrerings_knapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
+	  margin-bottom: 1.5rem;
     }
 #filter_knapper, #alle_knap{
-	background-color: white;
-	color: black;
-	border: solid 1px black;
+	background-color: #003BFF;
+	color: white;
+	border: solid 0.5px black;
+}
+
+#filter_knapper:hover, #alle_knap:hover, .valgt{
+	background-color: #002498;
+	text-decoration-line: underline;
+	
 }
 
 #produktoversigt{
@@ -64,11 +71,27 @@ padding-bottom: 2.5rem;
 	#indledning{
 		padding-bottom: 5rem;
 	}
+	#filtrerings_knapper{
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		margin-bottom: 2rem;
+		border: solid 0.5px black;
+	}	
+	#alle_knap {
+      grid-column: span 4;
+    }
 }
 @media (min-width: 1000px) {
 	#produktoversigt{
 		grid-template-columns: repeat(4, 1fr);
-		}	
+		}
+	#filtrerings_knapper{
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		margin-bottom: 2rem;
+		border: solid 0.5px black;
+	}	
+	#alle_knap {
+      grid-column: span 4;
+    }
 }
 
 </style>
@@ -80,7 +103,7 @@ padding-bottom: 2.5rem;
 	<p>Lækre og økologiske sæbebarer som kan bruges af hele husstanden. Alle sæbebarer fra Do Lah kan bruges på både krop og hænder, og passer til alle hudtyper. </p>
 </article>
 <nav id=filtrerings_knapper>
-	<button id="alle_knap" data-produkt="alle">Alle</button>
+	<button id="alle_knap" class="filter_knapper" class="filter" class="valgt" data-produkt="alle">Alle</button>
 </nav>
 
 <section id="produktoversigt"></section>
@@ -139,8 +162,14 @@ function addEventListenersToButtons(){
 
 function filtrering(){
 	filterProdukt = this.dataset.produkt;
-	console.log(filterProdukt);
-
+	// console.log(filterProdukt);
+	//fjern .valgt fra alle
+document.querySelectorAll("#filtrerings_knapper .filter").forEach(knap =>{
+	knap.classList.remove("valgt");
+});
+//tilføj .valgt til den aktive knap
+this.classList.add("valgt");
+console.log("line berner");
 	// Kald funktion
 	visProdukter();
 }
@@ -156,7 +185,7 @@ function start(){
 
 // Oprettelse af function 'visProdukter' og definer hvilket indhold der skal vises i template. forEach = for hvert produkt vises navn, pris og billede
 function visProdukter(){
-	console.log(produkter);
+	// console.log(produkter);
 	const skabelon = document.querySelector("template");
 	const liste = document.querySelector("#produktoversigt");
 	liste.innerHTML = "";
