@@ -1,6 +1,9 @@
 <?php
 
-get_header(); ?>
+get_header(); 
+/* Start the Loop */
+
+?>
 
 <style>
 	/* RYK ALLE STYLES OVER I CUSTOM.CSS */
@@ -10,6 +13,14 @@ main {
 }
 main section {
   grid-column: 2/3;
+}
+
+video {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  border: solid 1px black;
 }
 
 #indledning{
@@ -113,7 +124,7 @@ padding-bottom: 2.5rem;
             <p class="produkt_navn"></p>
             <p class="produkt_pris"></p>
         </div>
-		<img class="produktbillede" src="" alt="">
+		<video muted class="produktbillede" src="" alt="">
 	</figure>
 </template>
 </section>
@@ -172,6 +183,7 @@ this.classList.add("valgt");
 console.log("line berner");
 	// Kald funktion
 	visProdukter();
+	startVideoer();
 }
 
 // Oprettelse af function 'start' (som starter så snart siden er loaded)
@@ -195,14 +207,15 @@ function visProdukter(){
 		const klon = skabelon.cloneNode(true).content;
 		klon.querySelector(".produkt_navn").textContent = produkt.navn;
 		klon.querySelector(".produkt_pris").textContent = produkt.pris;
-		klon.querySelector(".produktbillede").src = produkt.billede[0].guid;
-		klon.querySelector(".produktbillede").alt = produkt.navn;
+		klon.querySelector("video").src = produkt.billede[0].guid;
+		klon.querySelector("video").alt = produkt.navn;
+		klon.querySelector("video").addEventListener("mouseover",(e)=>e.target.play());
+		klon.querySelector("video").addEventListener("mouseout",(e)=>e.target.pause());
 		klon.querySelector("figure").addEventListener("click", ()=>{location.href = produkt.link});
 		liste.appendChild(klon);
 		}
 	})
 }
-
 
 </script>
 

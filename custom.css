@@ -15,26 +15,6 @@ figure {
   margin: 0;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: balboa-plus-fill, sans-serif;
-  /* font-family: "Century Gothic"; */
-  font-weight: 400;
-  font-style: normal;
-}
-
-p,
-a {
-  font-family: nimbus-sans, sans-serif;
-  /* font-family: "Century Gothic"; */
-  font-weight: 300;
-  font-style: normal;
-  font-size: clamp(1.1rem, 1.0429rem + 0.2438vw, 1.5rem);
-  max-width: 60ch;
-  line-height: 1.5rem;
-}
 /* ---------------   Knapper   ---------------*/
 button {
   font-family: balboa-plus-fill, sans-serif;
