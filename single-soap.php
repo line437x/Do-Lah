@@ -172,7 +172,7 @@ function start(){
 // Oprettelse af function 'visProdukt' og definer hvilket indhold der skal vises
 function visProdukt(){
 	document.querySelector("#produkt_navn_single").textContent = produkt.navn;
-	document.querySelector(".produktbilleder").src = produkt.billede[0].guid;
+	document.querySelector(".produktbilleder").src = produkt.billede[1].guid;
 	document.querySelector(".produktbilleder").alt = produkt.navn;
 	document.querySelector("#produkt_beskrivelse").textContent = produkt.beskrivelse;
 	document.querySelector("#produkt_egenskab").textContent = produkt.egenskab;

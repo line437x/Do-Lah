@@ -52,11 +52,10 @@ padding-bottom: 2.5rem;
 }
 
 #produktoversigt{
-	/* grid-column: 1/3; */
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	/* grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
 	}
+	
 
 #alle_knap {
       grid-column: 1/3;
@@ -70,6 +69,7 @@ padding-bottom: 2.5rem;
 .produkt_information {
   position: absolute;
   padding: 0.5rem;
+  width: 10.5rem;
 }
 .produkt_navn,
 .produkt_pris {
@@ -79,6 +79,11 @@ padding-bottom: 2.5rem;
 	#produktoversigt{
 		grid-template-columns: 1fr 1fr 1fr;
 		}	
+
+	.produkt_information {
+  		width: 15rem;
+	}
+	
 	#indledning{
 		padding-bottom: 5rem;
 	}
@@ -95,6 +100,10 @@ padding-bottom: 2.5rem;
 	#produktoversigt{
 		grid-template-columns: repeat(4, 1fr);
 		}
+	.produkt_information {
+  		width: 15rem;
+}
+		
 	#filtrerings_knapper{
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 		margin-bottom: 2rem;

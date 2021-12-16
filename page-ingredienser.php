@@ -12,11 +12,12 @@ main section {
   grid-column: 2/3;
 }
 
-img {
+.ingrediensbillede {
   display: block;
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 13rem;
   padding: 0;
+  border: none;
 }
 
 
