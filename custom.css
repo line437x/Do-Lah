@@ -16,16 +16,15 @@ figure {
 }
 
 /* ---------------   Knapper   ---------------*/
-button {
+/* button {
   font-family: balboa-plus-fill, sans-serif;
-  /* font-family: "Century Gothic"; */
   font-weight: 400;
   font-style: normal;
   background-color: black;
   color: white;
   border: solid 1px black;
   padding: 0.5rem;
-}
+} */
 
 /* ---------------   Single-view   ---------------*/
 /* #produkt_container {

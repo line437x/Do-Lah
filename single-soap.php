@@ -57,13 +57,44 @@ main section {
       padding: 0.5rem;
     }
 
-    button {
+    /* button {
       background-color: black;
       color: white;
 	  height: 3rem;
       border: solid 1px black;
 	  padding: 0.5rem;
+    } */
+
+    /* #slideshow_knapper{
+      display: flex;
+      justify-content: space-between;
+    } */
+
+    #frem_knap, #tilbage_knap{
+  color: black;
+  border: none;
+  background: none;
     }
+
+    
+#billede_container {
+display: grid;
+}
+
+.produktbilleder {
+grid-area: 1/1;
+}
+
+#slideshow_knapper {
+grid-area: 1/1;
+place-self: center;
+z-index: 10;
+
+width: 100%;
+display: flex;
+justify-content: space-between;
+}
+
 
 	@media (min-width: 700px) {
       #produkt {
@@ -87,11 +118,17 @@ main section {
 
 <main id="single_view">
 	<section>
-		<button id="tilbage_knap">Tilbage til shoppen</button>
+		<button id="tilbage_shop_knap" class="button">Tilbage til shoppen</button>
 	<article id="produkt_container">
         <h1 id="produkt_navn_single"></h1>
 
-        <figure id="billede_container"><img class="produktbilleder" src="pine.png" alt="" /></figure>
+        <figure id="billede_container">
+          <div id="slideshow_knapper">
+            <button id="tilbage_knap"><</button> 
+            <button id="frem_knap">></button> 
+          </div> 
+          <img class="produktbilleder" src="" alt="" />
+        </figure>
 
         <div id="tekst_1">
           <h3>Beskrivelse og egenskaber</h3>
@@ -115,7 +152,7 @@ main section {
             <p>1</p>
             <p>+</p>
           </div>
-          <button>Læg i kurv</button>
+          <button class="button">Læg i kurv</button>
         </div>
         <div id="tekst_4">
           <h3>Ingredienser</h3>
@@ -129,21 +166,35 @@ main section {
 // console.log("hip hurra");
 
 // Oprettelse af variabler
-let produkter;
+let produkt;
 let ingredienser;
+let billeder;
+let tæller = 0;
 
 const url = "https://lineberner.com/kea/2_semester/dolah/wp-json/wp/v2/soap/"+<?php echo get_the_ID() ?>;
 const ingrediensUrl = "https://lineberner.com/kea/2_semester/dolah/wp-json/wp/v2/contain";
 
-// Oprettelse af function 'getJson' og definer hvordanm rest API'en hentes ind, og start function 'visProdukt'
+const knapFrem = document.querySelector("#frem_knap");
+knapFrem.addEventListener("click", skiftBillede);
+
+const knapTilbage = document.querySelector("#tilbage_knap");
+knapTilbage.addEventListener("click", skiftBilledeTilbage);
+
+const productimage = document.querySelector(".produktbilleder");
+
+
+// Oprettelse af function 'getJson' og definer hvordanm rest API'en hentes ind, og start functions 'visProdukt' og 'visIngredienser'
 async function getJson(){
 	const response = await fetch(url);
 	produkt = await response.json();
-	
+
+	billeder = produkt.billede;
+
 	const ingrediensData = await fetch(ingrediensUrl);
 	ingredienser = await ingrediensData.json();
 
 	console.log(produkt);
+  console.log(billeder);
 
 	// Kald funktioner
 	visProdukt();
@@ -169,10 +220,11 @@ function start(){
 	getJson()
 }
 
+
 // Oprettelse af function 'visProdukt' og definer hvilket indhold der skal vises
 function visProdukt(){
 	document.querySelector("#produkt_navn_single").textContent = produkt.navn;
-	document.querySelector(".produktbilleder").src = produkt.billede[1].guid;
+	productimage.src = produkt.billede[0].guid;
 	document.querySelector(".produktbilleder").alt = produkt.navn;
 	document.querySelector("#produkt_beskrivelse").textContent = produkt.beskrivelse;
 	document.querySelector("#produkt_egenskab").textContent = produkt.egenskab;
@@ -180,9 +232,34 @@ function visProdukt(){
 	document.querySelector("#produkt_vaegt").textContent = produkt.vaegt;
 	document.querySelector("#produkt_tip").textContent = produkt.tip;
 }
-document.querySelector("#tilbage_knap").addEventListener("click", () => {
+document.querySelector("#tilbage_shop_knap").addEventListener("click", () => {
 	window.history.back();
 });
+
+// Skrift billede når der trykkes på functions
+function skiftBillede(){
+  console.log("line berner");
+  if (tæller == billeder.length - 1){
+    tæller = 0;
+    productimage.src = produkt.billede[tæller].guid;
+
+    return;}
+    else{
+      tæller++;
+      productimage.src = produkt.billede[tæller].guid;
+    }
+}
+
+function skiftBilledeTilbage(){
+  console.log("line berner");
+  if (tæller >0){
+      tæller--;
+      productimage.src = produkt.billede[tæller].guid;
+  } else{
+tæller = billeder.length - 1;
+productimage.src = produkt.billede[tæller].guid;
+  }
+}
 
 </script>
 

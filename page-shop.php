@@ -216,7 +216,7 @@ function visProdukter(){
 		const klon = skabelon.cloneNode(true).content;
 		klon.querySelector(".produkt_navn").textContent = produkt.navn;
 		klon.querySelector(".produkt_pris").textContent = produkt.pris;
-		klon.querySelector("video").src = produkt.billede[0].guid;
+		klon.querySelector("video").src = produkt.video.guid;
 		klon.querySelector("video").alt = produkt.navn;
 		klon.querySelector("video").addEventListener("mouseover",(e)=>e.target.play());
 		klon.querySelector("video").addEventListener("mouseout",(e)=>e.target.pause());
