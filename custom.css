@@ -8,55 +8,363 @@ img {
   width: 100%;
   height: auto;
   padding: 0;
-  border: solid 1px black;
+  border: solid 0.5px black;
 }
 
 figure {
   margin: 0;
 }
 
-/* ---------------   Knapper   ---------------*/
-/* button {
-  font-family: balboa-plus-fill, sans-serif;
+/* --------- Width på indhold --------- */
+.post-thumbnail,
+.entry-content .wp-audio-shortcode,
+.entry-content
+  > :not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce),
+[class*="inner-container"]
+  > :not(.entry-content):not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
+  max-width: 1000px;
+}
+
+/* --------- Style på billeder --------- */
+figcaption {
+  display: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+
+/* --------- Style på header --------- */
+.custom-logo {
+  border: none;
+  max-width: 10rem !important;
+}
+
+/* Fjernelse af default h1 */
+.entry-header {
+  display: none;
+}
+
+/* --------- Style på footer --------- */
+/* Fjernelse af default h1 */
+footer {
+  display: none;
+}
+
+.footer_logo img {
+  width: 9rem;
+  border: none !important;
+}
+
+.widget-area {
+  border-top: solid 0.5px black;
+  padding: 1rem;
+}
+
+aside h2 {
+  font-size: 1.5rem !important;
+  font-weight: normal !important;
+}
+
+.mobil {
+  text-decoration-line: underline;
+}
+
+/* --------- Style af fonts --------- */
+h1 {
+  font-family: "bodoni moda" !important;
   font-weight: 400;
-  font-style: normal;
-  background-color: black;
+  font-size: clamp(2.5rem, 2.1769rem + 1.4769vw, 3.1rem) !important;
+  padding-bottom: 2rem;
+}
+
+h2 {
+  font-family: "bodoni moda" !important;
+  font-size: clamp(1.7rem, 1.3769rem + 1.4769vw, 2.3rem) !important;
+}
+
+h3 {
+  font-family: "bodoni moda" !important;
+  font-size: clamp(1.4rem, 1.2385rem + 0.7385vw, 1.7rem) !important;
+}
+
+.menu-item a {
+  font-family: bodoni moda;
+}
+a:hover {
+  text-decoration-style: solid !important;
+}
+
+p {
+  font-family: Assistant !important;
+  font-size: clamp(0.9rem, 0.8031rem + 0.4431vw, 1.08rem) !important;
+  max-width: 60ch !important;
+}
+
+/* --------- Style på knapper --------- */
+.has-background-white
+  .site
+  a:focus:not(.wp-block-button__link):not(.wp-block-file__button) {
+  background: transparent;
+  color: black;
+}
+
+button,
+.button {
+  font-family: Assistant !important;
+  font-size: clamp(0.9rem, 0.7654rem + 0.6154vw, 1.15rem) !important;
+}
+
+.button {
+  border: solid 0.5px black !important;
+  background-color: #004cdc !important;
+  text-align: center;
+  height: 4rem;
+  display: grid;
+}
+
+.button:hover {
+  background-color: #002498 !important;
+  border: solid 0.5px black;
+  text-decoration-line: underline;
+  color: white !important;
+}
+
+.button a {
   color: white;
-  border: solid 1px black;
-  padding: 0.5rem;
-} */
+  text-decoration-line: none;
+  align-self: center;
+}
 
-/* ---------------   Single-view   ---------------*/
-/* #produkt_container {
+.button:focus,
+button:focus {
+  outline: none !important;
+}
+
+/* --------- Style på forside --------- */
+.indledning_container {
+  text-align: center;
+  padding-bottom: 2.5rem;
+}
+
+.månedens_container,
+.instagram_container {
   display: grid;
+  border: solid 0.5px black;
 }
 
-#produkt_navn_single,
-#tekst_1,
-#tekst_2,
-#tekst_3,
-#køb,
-#tekst_4 {
-  border: solid 1px black;
+.månedens_sæbe_billede {
+  grid-row: 3/4;
+}
+
+.månedens_overskrift,
+.instagram_overskrift {
+  text-align: center;
+  border: solid 0.5px black;
+}
+
+.månedens_overskrift,
+.månedens_sæbetitel,
+.månedens_sæbe_beskrivelse,
+.instagram_overskrift {
   padding: 0.5rem;
 }
-
-#produkt_navn_single {
+.månedens_sæbetitel {
   text-align: center;
 }
 
-#køb {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+/* fjern margin på billeder*/
+.wp-block-gallery .blocks-gallery-item {
+  margin: 0 !important;
+}
+
+/* --------- Style på om side --------- */
+
+.historie_container,
+.budskab_container {
+  border: solid 0.5px black;
+}
+
+.historie_overskrift,
+.budskab_overskrift {
+  border: solid 0.5px black;
+  padding: 0.5rem;
+  margin: 0 !important;
+}
+.historie_p,
+.budskab_p {
+  padding: 0.5rem;
+  margin: 0 !important;
+}
+.historie_billede,
+.budskab_billede {
+  margin: 0 !important;
+}
+.om_knap_container {
+}
+
+/* --------- Style på kontakt side --------- */
+.kontakt_container,
+.information_container {
+  border: solid 0.5px black;
+}
+
+.kontakt_overskrift,
+.information_overskrift {
+  border: solid 0.5px black;
+  padding: 0.5rem;
+  margin: 0 !important;
+}
+
+.kontakt_tekst,
+.information_tekst {
+  padding: 0.5rem;
+  margin: 0 !important;
+}
+.kontakt_billede {
+  margin: 0 !important;
+}
+
+.indledning_tekst p,
+.information_tekst p {
+  margin: 0 !important;
+}
+.indledning_overskrift,
+.indledning_tekst {
   text-align: center;
 }
 
-#antal {
-  display: flex;
-}
+/* ---------------------- Her starter desktop/tablet----------------------- */
 
-#antal p {
-  border: solid 1px black;
-  width: 3rem;
-  padding: 0.5rem;
-} */
+@media (min-width: 700px) {
+  .custom-logo {
+    max-width: 13rem !important;
+  }
+
+  /* --------- Style på forside --------- */
+  .månedens_container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+  }
+
+  .månedens_overskrift {
+    grid-column: span 3;
+  }
+  .månedens_sæbe_billede {
+    grid-column: 1;
+    grid-row: 2/5;
+  }
+  .månedens_sæbetitel,
+  .månedens_sæbe_beskrivelse,
+  .se_produktet_knap {
+    grid-column: 2;
+  }
+  .se_produktet_knap {
+    grid-row: 4/5;
+    height: auto;
+  }
+
+  .månedens_sæbetitel {
+    padding-top: 2rem;
+  }
+
+  .månedens_sæbe_beskrivelse {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  /* --------- Style på om side --------- */
+
+  /*fjern et element fra grid*/
+  .wp-block-group::before,
+  .wp-block-group::after {
+    display: none;
+  }
+
+  .historie_overskrift,
+  .budskab_overskrift {
+    padding-left: 2rem;
+  }
+
+  .historie_p,
+  .budskab_p {
+    padding: 2rem;
+  }
+
+  .historie_container .wp-block-group__inner-container {
+    display: grid;
+    grid-template-columns: auto 20rem;
+    grid-template-rows: auto;
+  }
+
+  .historie_overskrift {
+    grid-column: span 2;
+  }
+
+  .historie_p {
+    grid-column: 1;
+  }
+
+  .historie_billede {
+    grid-column: 2;
+  }
+
+  .budskab_container .wp-block-group__inner-container {
+    display: grid;
+    grid-template-columns: 25rem 1fr;
+    grid-template-rows: auto;
+  }
+
+  .budskab_overskrift {
+    grid-column: span 2;
+  }
+
+  .budskab_p {
+    grid-column: 2;
+  }
+
+  .budskab_billede {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .om_knap_container .wp-block-group__inner-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .shop_knap,
+  .til_ingredienser_knap {
+    margin: 0 !important;
+  }
+
+  /* --------- Style på kontakt side --------- */
+  .kontakt_overskrift,
+  .information_overskrift {
+    padding-left: 2rem;
+  }
+
+  .kontakt_tekst,
+  .information_tekst {
+    padding: 2rem;
+  }
+
+  .indledning_overskrift,
+  .indledning_tekst {
+    text-align: center !important;
+  }
+  .kontakt_container .wp-block-group__inner-container {
+    display: grid;
+    grid-template-columns: 1fr 20rem;
+  }
+  .kontakt_overskrift {
+    grid-column: span 2;
+  }
+
+  .kontakt_billede {
+    grid-column: 2;
+  }
+}

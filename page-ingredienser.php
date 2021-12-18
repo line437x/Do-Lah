@@ -12,24 +12,22 @@ main section {
   grid-column: 2/3;
 }
 
+#intro{
+	display:grid;
+	text-align: center;
+	justify-content: center;
+}
+
 .ingrediensbillede {
   display: block;
   width: auto;
-  height: 13rem;
-  padding: 0;
+  height: 9rem;
   border: none;
+  grid-area: 2;
+  place-self: center;
+  margin: 1rem;
 }
 
-
-#button {
-      background-color: black;
-      color: white;
-      border: solid 1px black;
-	  padding: 1rem;
-	  text-decoration-line: none;
-    }
-
-/* style på grid-produktoversigt i mobile */
 #intro{
 	margin-bottom: 2rem;
 }
@@ -42,10 +40,21 @@ main section {
 	}
 
 .ingrediens{
-	/* height: 23rem; */
-	border: solid 1px black;
+	display:grid;
+	border: solid 0.5px black;
 	padding: 1rem;
+	justify-content:center;
 }
+.ingrediens_navn{
+	padding-bottom: 1rem;
+}
+
+@media (min-width: 700px) {
+.ingrediens{
+	padding: 2rem;
+}	
+}
+
 </style>
 
 <main>
@@ -59,14 +68,14 @@ main section {
 <template id="enkelt_ingrediens">
 	<figure class="ingrediens">
 		<div class="ingrediens_information">
-            <h4 class="ingrediens_navn"></h4>
+            <h3 class="ingrediens_navn"></h3>
             <p class="ingrediens_beskrivelse"></p>
         </div>
 		<img class="ingrediensbillede" src="" alt="">
 	</figure>
 </template>
 <div id="knapper">
-	<a id="button" href= "https://lineberner.com/kea/2_semester/dolah/shop" >Gå til shoppen</a>
+	<a class="button" href= "https://lineberner.com/kea/2_semester/dolah/shop" >Gå til shoppen</a>
 </div>
 </section>
 </main>

@@ -17,7 +17,7 @@ main section {
       width: 100%;
       height: auto;
       padding: 0;
-      border: solid 1px black;
+      border: solid 0.5px black;
     }
 
 	figure {
@@ -34,7 +34,7 @@ main section {
     #tekst_3,
     #køb,
     #tekst_4 {
-      border: solid 1px black;
+      border: solid 0.5px black;
       padding: 0.5rem;
     }
 
@@ -56,19 +56,6 @@ main section {
       height: 2.5rem;
       padding: 0.5rem;
     }
-
-    /* button {
-      background-color: black;
-      color: white;
-	  height: 3rem;
-      border: solid 1px black;
-	  padding: 0.5rem;
-    } */
-
-    /* #slideshow_knapper{
-      display: flex;
-      justify-content: space-between;
-    } */
 
     #frem_knap, #tilbage_knap{
   color: black;
@@ -107,6 +94,23 @@ justify-content: space-between;
       #produkt_navn_single {
         grid-column: 1/3;
       }
+      #produkt_navn_single,
+    #tekst_1,
+    #tekst_2,
+    #tekst_3,
+    #køb,
+    #tekst_4 {
+      padding: 2rem;
+    }
+    #slideshow_knapper {
+grid-area: 1/1;
+place-self: center;
+z-index: 10;
+
+width: 100%;
+display: flex;
+justify-content: space-between;
+}
     }
 
 	@media (min-width: 1000px) {
@@ -169,18 +173,10 @@ justify-content: space-between;
 let produkt;
 let ingredienser;
 let billeder;
-let tæller = 0;
 
 const url = "https://lineberner.com/kea/2_semester/dolah/wp-json/wp/v2/soap/"+<?php echo get_the_ID() ?>;
 const ingrediensUrl = "https://lineberner.com/kea/2_semester/dolah/wp-json/wp/v2/contain";
 
-const knapFrem = document.querySelector("#frem_knap");
-knapFrem.addEventListener("click", skiftBillede);
-
-const knapTilbage = document.querySelector("#tilbage_knap");
-knapTilbage.addEventListener("click", skiftBilledeTilbage);
-
-const productimage = document.querySelector(".produktbilleder");
 
 
 // Oprettelse af function 'getJson' og definer hvordanm rest API'en hentes ind, og start functions 'visProdukt' og 'visIngredienser'
@@ -236,9 +232,19 @@ document.querySelector("#tilbage_shop_knap").addEventListener("click", () => {
 	window.history.back();
 });
 
-// Skrift billede når der trykkes på functions
+
+// Oprettelse af variabler
+let tæller = 0;
+const productimage = document.querySelector(".produktbilleder");
+
+// Definer knapper og gør dem klikbarer
+const knapFrem = document.querySelector("#frem_knap");
+knapFrem.addEventListener("click", skiftBillede);
+const knapTilbage = document.querySelector("#tilbage_knap");
+knapTilbage.addEventListener("click", skiftBilledeTilbage);
+
+// Definition af 'skiftBillede' hvor der skiftes til næste billede når der trykkes på knapFrem
 function skiftBillede(){
-  console.log("line berner");
   if (tæller == billeder.length - 1){
     tæller = 0;
     productimage.src = produkt.billede[tæller].guid;
@@ -249,9 +255,8 @@ function skiftBillede(){
       productimage.src = produkt.billede[tæller].guid;
     }
 }
-
+// Definition af 'skiftBilledeTilbage' hvor der skiftes til forrige billede når der trykkes på knapTilbage
 function skiftBilledeTilbage(){
-  console.log("line berner");
   if (tæller >0){
       tæller--;
       productimage.src = produkt.billede[tæller].guid;

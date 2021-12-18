@@ -182,14 +182,12 @@ function addEventListenersToButtons(){
 
 function filtrering(){
 	filterProdukt = this.dataset.produkt;
-	// console.log(filterProdukt);
 	//fjern .valgt fra alle
-document.querySelectorAll("#filtrerings_knapper .filter").forEach(knap =>{
+	document.querySelectorAll("#filtrerings_knapper .filter").forEach(knap =>{
 	knap.classList.remove("valgt");
-});
-//tilføj .valgt til den aktive knap
-this.classList.add("valgt");
-console.log("line berner");
+	});
+	//tilføj .valgt til den aktive knap
+	this.classList.add("valgt");
 	// Kald funktion
 	visProdukter();
 	startVideoer();
@@ -204,13 +202,16 @@ function start(){
 	getJson()
 }
 
-// Oprettelse af function 'visProdukter' og definer hvilket indhold der skal vises i template. forEach = for hvert produkt vises navn, pris og billede
+// Oprettelse af function 'visProdukter'
 function visProdukter(){
-	// console.log(produkter);
+	// Oprettelse af variabler
 	const skabelon = document.querySelector("template");
 	const liste = document.querySelector("#produktoversigt");
+	
+	// Tøm visningscontaineren (liste) før hver visning, altså hver gang der bliver skiftet kategori
 	liste.innerHTML = "";
 
+	// Definer hvilket indhold der skal vises i template. forEach = for hvert produkt vises navn, pris og billede
 	produkter.forEach(produkt =>{
 		if ( filterProdukt == "alle" || produkt.product_type.includes(parseInt(filterProdukt))){
 		const klon = skabelon.cloneNode(true).content;
@@ -218,9 +219,15 @@ function visProdukter(){
 		klon.querySelector(".produkt_pris").textContent = produkt.pris;
 		klon.querySelector("video").src = produkt.video.guid;
 		klon.querySelector("video").alt = produkt.navn;
+
+		// Start og slut produktvideo ved hover på elementet
 		klon.querySelector("video").addEventListener("mouseover",(e)=>e.target.play());
 		klon.querySelector("video").addEventListener("mouseout",(e)=>e.target.pause());
+
+		// Gør produktet klikbart og send bruger videre til det enkelte produkts oversigt
 		klon.querySelector("figure").addEventListener("click", ()=>{location.href = produkt.link});
+
+		// Tilføj elementerne (klon) til #produktoversigt (liste)
 		liste.appendChild(klon);
 		}
 	})
