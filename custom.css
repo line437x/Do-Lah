@@ -116,6 +116,7 @@ button,
 .button {
   font-family: Assistant !important;
   font-size: clamp(0.9rem, 0.7654rem + 0.6154vw, 1.15rem) !important;
+  max-width: none !important;
 }
 
 .button {
@@ -142,6 +143,12 @@ button,
 .button:focus,
 button:focus {
   outline: none !important;
+  color: white !important;
+}
+
+.button a:focus,
+button a:focus {
+  color: white !important;
 }
 
 /* --------- Style på forside --------- */
@@ -158,6 +165,7 @@ button:focus {
 
 .månedens_sæbe_billede {
   grid-row: 3/4;
+  margin: 0;
 }
 
 .månedens_overskrift,
@@ -203,10 +211,12 @@ button:focus {
 .budskab_billede {
   margin: 0 !important;
 }
-.om_knap_container {
-}
 
 /* --------- Style på kontakt side --------- */
+.indledning_tekst {
+  margin-bottom: 3rem;
+}
+
 .kontakt_container,
 .information_container {
   border: solid 0.5px black;
@@ -342,6 +352,10 @@ button:focus {
   }
 
   /* --------- Style på kontakt side --------- */
+  .indledning_tekst {
+    margin-bottom: 5rem;
+  }
+
   .kontakt_overskrift,
   .information_overskrift {
     padding-left: 2rem;

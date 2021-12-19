@@ -12,20 +12,98 @@ main section {
   grid-column: 2/3;
 }
 
-    img {
-      display: block;
-      width: 100%;
-      height: auto;
-      padding: 0;
-      border: solid 0.5px black;
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  border: solid 0.5px black;
+}
+
+figure {
+  margin: 0;
+}
+
+#produkt_container {
+  display: grid;
+}
+
+#produkt_navn_single,
+#tekst_1,
+#tekst_2,
+#tekst_3,
+#køb,
+#tekst_4 {
+  border: solid 0.5px black;
+  padding: 0.5rem;
+}
+
+#produkt_navn_single {
+  text-align: center;
+}
+
+#køb {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+}
+
+#antal {
+  display: flex;
+  align-self: center;
+}
+
+#antal p {
+  border: solid 1px black;
+  width: 3rem;
+  height: 4rem;
+  padding: 0.5rem;
+}
+
+#frem_knap, #tilbage_knap{
+  color: black;
+  border: none;
+  background: none;
+}
+#frem_knap:active, #tilbage_knap:active{
+  color: black !important;
+}
+
+#tilbage_shop_knap{
+  margin-bottom: 1.5rem;
+}
+
+    
+#billede_container {
+  display: grid;
+}
+
+.produktbilleder {
+  grid-area: 1/1;
+}
+
+#slideshow_knapper {
+  grid-area: 1/1;
+  place-self: center;
+  z-index: 10;
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+	@media (min-width: 700px) {
+    #produkt {
+      grid-template-columns: 1fr 1fr;
     }
 
-	figure {
-      margin: 0;
+    #billede_container {
+      grid-row: 2/5;
     }
 
-    #produkt_container {
-      display: grid;
+    #produkt_navn_single {
+      grid-column: 1/3;
     }
 
     #produkt_navn_single,
@@ -34,84 +112,18 @@ main section {
     #tekst_3,
     #køb,
     #tekst_4 {
-      border: solid 0.5px black;
-      padding: 0.5rem;
-    }
-
-    #produkt_navn_single {
-      text-align: center;
-    }
-
-    #køb {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      text-align: center;
-    }
-	#antal {
-      display: flex;
-    }
-    #antal p {
-      border: solid 1px black;
-      width: 3rem;
-      height: 2.5rem;
-      padding: 0.5rem;
-    }
-
-    #frem_knap, #tilbage_knap{
-  color: black;
-  border: none;
-  background: none;
-    }
-
-    
-#billede_container {
-display: grid;
-}
-
-.produktbilleder {
-grid-area: 1/1;
-}
-
-#slideshow_knapper {
-grid-area: 1/1;
-place-self: center;
-z-index: 10;
-
-width: 100%;
-display: flex;
-justify-content: space-between;
-}
-
-
-	@media (min-width: 700px) {
-      #produkt {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      #billede_container {
-        grid-row: 2/5;
-      }
-      #produkt_navn_single {
-        grid-column: 1/3;
-      }
-      #produkt_navn_single,
-    #tekst_1,
-    #tekst_2,
-    #tekst_3,
-    #køb,
-    #tekst_4 {
       padding: 2rem;
     }
     #slideshow_knapper {
-grid-area: 1/1;
-place-self: center;
-z-index: 10;
+      grid-area: 1/1;
+      place-self: center;
+      z-index: 10;
 
-width: 100%;
-display: flex;
-justify-content: space-between;
-}
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
     }
+  }
 
 	@media (min-width: 1000px) {
 		#billede_container {
@@ -152,11 +164,11 @@ justify-content: space-between;
 
         <div id="køb">
           <div id="antal">
-            <p>-</p>
-            <p>1</p>
-            <p>+</p>
+            <p id="ned">-</p>
+            <p id="antal_tæller">1</p>
+            <p id="op">+</p>
           </div>
-          <button class="button">Læg i kurv</button>
+          <button id="tilføj_til_kurv" class="button">Læg i kurv</button>
         </div>
         <div id="tekst_4">
           <h3>Ingredienser</h3>
@@ -173,10 +185,16 @@ justify-content: space-between;
 let produkt;
 let ingredienser;
 let billeder;
+let antal = 1;
 
+const knapOp = document.querySelector("#op");
+const knapNed = document.querySelector("#ned");
+const antalVarer = document.querySelector("#antal_tæller");
 const url = "https://lineberner.com/kea/2_semester/dolah/wp-json/wp/v2/soap/"+<?php echo get_the_ID() ?>;
 const ingrediensUrl = "https://lineberner.com/kea/2_semester/dolah/wp-json/wp/v2/contain";
 
+knapOp.addEventListener("click",ændreAntalOp);
+knapNed.addEventListener("click",ændreAntalned);
 
 
 // Oprettelse af function 'getJson' og definer hvordanm rest API'en hentes ind, og start functions 'visProdukt' og 'visIngredienser'
@@ -265,6 +283,29 @@ tæller = billeder.length - 1;
 productimage.src = produkt.billede[tæller].guid;
   }
 }
+
+// Gør købsknap klikbar og vis besked på skærm 
+const knapKurv = document.querySelector("#tilføj_til_kurv");
+knapKurv.addEventListener("click", tilføjTilKurv);
+
+function tilføjTilKurv(){
+  console.log("berner");
+  alert("Varen er lagt i din kurv");
+}
+
+// Gør det muligt at ændre i antal af varer
+
+function ændreAntalOp() {
+    // Læg antal til
+    antal++;
+    antalVarer.textContent = antal;
+}
+function ændreAntalned() {
+    // Træk antal fra
+    antal--;
+    antalVarer.textContent = antal;
+}
+
 
 </script>
 

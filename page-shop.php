@@ -40,7 +40,7 @@ padding-bottom: 2.5rem;
 	  margin-bottom: 1.5rem;
     }
 #filter_knapper, #alle_knap{
-	background-color: #003BFF;
+	background-color: #004cdc;
 	color: white;
 	border: solid 0.5px black;
 }
