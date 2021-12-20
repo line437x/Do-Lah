@@ -50,7 +50,6 @@ figure {
 
 #antal {
   display: flex;
-  align-self: center;
 }
 
 #antal p {
@@ -58,6 +57,10 @@ figure {
   width: 3rem;
   height: 4rem;
   padding: 0.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #frem_knap, #tilbage_knap{
@@ -92,6 +95,12 @@ figure {
   justify-content: space-between;
 }
 
+#køb{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 
 	@media (min-width: 700px) {
     #produkt {
@@ -99,21 +108,24 @@ figure {
     }
 
     #billede_container {
+      grid-column: 1;
       grid-row: 2/5;
     }
 
     #produkt_navn_single {
       grid-column: 1/3;
+      padding: 1rem;
     }
 
-    #produkt_navn_single,
     #tekst_1,
     #tekst_2,
-    #tekst_3,
-    #køb,
-    #tekst_4 {
+    #tekst_3, #køb, #tekst_4{
       padding: 2rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      grid-column: 2;
     }
+
     #slideshow_knapper {
       grid-area: 1/1;
       place-self: center;
@@ -127,8 +139,16 @@ figure {
 
 	@media (min-width: 1000px) {
 		#billede_container {
-        grid-row: 2/7;
+        grid-column:1;
+        grid-row: 2/6;
       }
+      #tekst_1,
+    #tekst_2,
+    #tekst_3,
+    #køb,
+    #tekst_4 {
+      grid-column: 2;
+    }
 	}
 </style>
 
