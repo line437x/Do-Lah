@@ -142,13 +142,6 @@ figure {
         grid-column:1;
         grid-row: 2/6;
       }
-      #tekst_1,
-    #tekst_2,
-    #tekst_3,
-    #køb,
-    #tekst_4 {
-      grid-column: 2;
-    }
 	}
 </style>
 

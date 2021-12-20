@@ -48,6 +48,9 @@ main section {
 .ingrediens_navn{
 	padding-bottom: 1rem;
 }
+.til_shop_knappen{
+padding-top: 1.5rem;
+}
 
 @media (min-width: 700px) {
 .ingrediens{
@@ -74,7 +77,7 @@ main section {
 		<img class="ingrediensbillede" src="" alt="">
 	</figure>
 </template>
-<div id="knapper">
+<div id="knapper" class="til_shop_knappen">
 	<a class="button" href= "https://lineberner.com/kea/2_semester/dolah/shop" >Gå til shoppen</a>
 </div>
 </section>

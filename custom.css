@@ -3,16 +3,8 @@
 main {
   width: 90vw;
 }
-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  padding: 0;
-  border: solid 0.5px black;
-}
-
-figure {
-  margin: 0;
+#masthead {
+  padding-bottom: 2rem;
 }
 
 /* --------- Width på indhold --------- */
@@ -35,6 +27,11 @@ img {
   width: 100%;
   height: auto;
   padding: 0;
+  border: solid 0.5px black;
+}
+
+figure {
+  margin: 0;
 }
 
 /* --------- Style på header --------- */
@@ -43,9 +40,17 @@ img {
   max-width: 10rem !important;
 }
 
-/* Fjernelse af default h1 */
 .entry-header {
   display: none;
+}
+
+#primary-mobile-menu {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+#primary-mobile-menu:hover {
+  color: black !important;
 }
 
 /* --------- Style på footer --------- */
@@ -91,13 +96,6 @@ h3 {
   font-size: clamp(1.4rem, 1.2385rem + 0.7385vw, 1.7rem) !important;
 }
 
-.menu-item a {
-  font-family: bodoni moda;
-}
-a:hover {
-  text-decoration-style: solid !important;
-}
-
 p {
   font-family: Assistant !important;
   font-size: clamp(0.9rem, 0.8031rem + 0.4431vw, 1.08rem) !important;
@@ -111,14 +109,24 @@ p {
   background: transparent;
   color: black;
 }
-
+a {
+  text-decoration: none;
+}
+.menu-item a {
+  font-family: bodoni moda;
+}
+a:hover {
+  text-decoration-style: solid !important;
+}
 button,
 .button {
   font-family: Assistant !important;
-  font-size: clamp(0.9rem, 0.7654rem + 0.6154vw, 1.15rem) !important;
   max-width: none !important;
 }
-
+button a,
+.button a {
+  font-size: clamp(0.9rem, 0.6846rem + 0.9846vw, 1.3rem) !important;
+}
 .button {
   border: solid 0.5px black !important;
   background-color: #004cdc !important;
@@ -126,54 +134,67 @@ button,
   height: 4rem;
   display: grid;
 }
-
 .button:hover {
   background-color: #002498 !important;
   border: solid 0.5px black;
   text-decoration-line: underline;
   color: white !important;
 }
-
 .button a {
   color: white;
   text-decoration-line: none;
   align-self: center;
 }
-
 .button:focus,
 button:focus {
   outline: none !important;
   color: white !important;
 }
-
 .button a:focus,
 button a:focus {
   color: white !important;
 }
+.splash_knap {
+  width: 60%;
+}
 
 /* --------- Style på forside --------- */
+.instagram_overskrift,
+.wp-block-gallery,
+.instagram_knap,
+.udvalgte_produkter_container .wp-block-image,
+.wp-block-gallery .blocks-gallery-item {
+  margin: 0 !important;
+}
+
+/* indledning*/
 .indledning_container {
   text-align: center;
   padding-bottom: 2.5rem;
 }
+.indledning_overskrift {
+  padding-top: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 
+/* Månedens sæbe + instagram*/
 .månedens_container,
 .instagram_container {
   display: grid;
   border: solid 0.5px black;
 }
-
 .månedens_sæbe_billede {
   grid-row: 3/4;
   margin: 0;
 }
-
 .månedens_overskrift,
 .instagram_overskrift {
   text-align: center;
   border: solid 0.5px black;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
 }
-
 .månedens_overskrift,
 .månedens_sæbetitel,
 .månedens_sæbe_beskrivelse,
@@ -182,11 +203,36 @@ button a:focus {
 }
 .månedens_sæbetitel {
   text-align: center;
+  padding-top: 2rem !important;
+}
+.månedens_sæbe_beskrivelse {
+  padding-bottom: 2rem !important;
 }
 
-/* fjern margin på billeder*/
-.wp-block-gallery .blocks-gallery-item {
+/* Udvalgte sæber*/
+.udvalgte_produkter_container .wp-block-group__inner-container {
+  display: grid;
+  border: solid 0.5px black;
+}
+.udvalgte_sæber_overskrift {
+  grid-column: 1/3;
+  border: solid 0.5px black;
+  width: 100%;
+  text-align: center;
   margin: 0 !important;
+  padding: 0.5rem;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+.udvalgte_produkter_container .button {
+  display: none;
+  grid-column: 1/3;
+  grid-row: 4;
+  width: 100%;
+  margin: 0;
+}
+.udvalgt_produkt img {
+  border: solid 0.5px black !important;
 }
 
 /* --------- Style på om side --------- */
@@ -195,13 +241,15 @@ button a:focus {
 .budskab_container {
   border: solid 0.5px black;
 }
-
 .historie_overskrift,
 .budskab_overskrift {
   border: solid 0.5px black;
   padding: 0.5rem;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
   margin: 0 !important;
 }
+
 .historie_p,
 .budskab_p {
   padding: 0.5rem;
@@ -213,22 +261,23 @@ button a:focus {
 }
 
 /* --------- Style på kontakt side --------- */
+/* Indledning */
 .indledning_tekst {
   margin-bottom: 3rem;
 }
-
+/* kontakt */
 .kontakt_container,
 .information_container {
   border: solid 0.5px black;
 }
-
 .kontakt_overskrift,
 .information_overskrift {
   border: solid 0.5px black;
   padding: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   margin: 0 !important;
 }
-
 .kontakt_tekst,
 .information_tekst {
   padding: 0.5rem;
@@ -237,14 +286,9 @@ button a:focus {
 .kontakt_billede {
   margin: 0 !important;
 }
-
 .indledning_tekst p,
 .information_tekst p {
   margin: 0 !important;
-}
-.indledning_overskrift,
-.indledning_tekst {
-  text-align: center;
 }
 
 /* ---------------------- Her starter desktop/tablet----------------------- */
@@ -255,12 +299,12 @@ button a:focus {
   }
 
   /* --------- Style på forside --------- */
+  /* Månedens sæbe */
   .månedens_container {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: 1fr 1fr !important;
     grid-template-rows: auto;
   }
-
   .månedens_overskrift {
     grid-column: span 3;
   }
@@ -277,98 +321,100 @@ button a:focus {
     grid-row: 4/5;
     height: auto;
   }
-
   .månedens_sæbetitel {
     padding-top: 2rem;
   }
-
   .månedens_sæbe_beskrivelse {
     padding-left: 2rem;
     padding-right: 2rem;
   }
-  /* --------- Style på om side --------- */
+  .månedens_sæbe_billede {
+    grid-row: 2/5 !important;
+    margin: 0 !important;
+  }
 
+  /* Udvalgte sæber*/
+  .udvalgte_produkter_container .wp-block-group__inner-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .udvalgte_sæber_overskrift {
+    grid-column: 1/5;
+  }
+  .udvalgte_produkter_container .button {
+    display: none;
+    grid-column: 1/5;
+    grid-row: 3;
+    width: 100%;
+    place-self: end;
+  }
+
+  /* --------- Style på om side --------- */
   /*fjern et element fra grid*/
   .wp-block-group::before,
   .wp-block-group::after {
     display: none;
   }
-
+  /* Historie og budskab */
   .historie_overskrift,
   .budskab_overskrift {
     padding-left: 2rem;
   }
-
   .historie_p,
   .budskab_p {
     padding: 2rem;
   }
-
   .historie_container .wp-block-group__inner-container {
     display: grid;
     grid-template-columns: auto 20rem;
     grid-template-rows: auto;
   }
-
   .historie_overskrift {
     grid-column: span 2;
   }
-
   .historie_p {
     grid-column: 1;
   }
-
   .historie_billede {
     grid-column: 2;
   }
-
   .budskab_container .wp-block-group__inner-container {
     display: grid;
     grid-template-columns: 25rem 1fr;
     grid-template-rows: auto;
   }
-
   .budskab_overskrift {
     grid-column: span 2;
   }
-
   .budskab_p {
     grid-column: 2;
   }
-
   .budskab_billede {
     grid-column: 1;
     grid-row: 2;
   }
-
   .om_knap_container .wp-block-group__inner-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-
   .shop_knap,
   .til_ingredienser_knap {
     margin: 0 !important;
   }
 
   /* --------- Style på kontakt side --------- */
+  /* Indledning */
   .indledning_tekst {
     margin-bottom: 5rem;
   }
 
+  /* Kontakt */
   .kontakt_overskrift,
   .information_overskrift {
     padding-left: 2rem;
   }
-
   .kontakt_tekst,
   .information_tekst {
     padding: 2rem;
-  }
-
-  .indledning_overskrift,
-  .indledning_tekst {
-    text-align: center !important;
   }
   .kontakt_container .wp-block-group__inner-container {
     display: grid;
@@ -377,7 +423,6 @@ button a:focus {
   .kontakt_overskrift {
     grid-column: span 2;
   }
-
   .kontakt_billede {
     grid-column: 2;
   }
