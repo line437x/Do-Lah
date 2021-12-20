@@ -216,7 +216,7 @@ function visProdukter(){
 		if ( filterProdukt == "alle" || produkt.product_type.includes(parseInt(filterProdukt))){
 		const klon = skabelon.cloneNode(true).content;
 		klon.querySelector(".produkt_navn").textContent = produkt.navn;
-		klon.querySelector(".produkt_pris").textContent = produkt.pris;
+		klon.querySelector(".produkt_pris").innerHTML = produkt.pris + ",-";
 		klon.querySelector("video").src = produkt.video.guid;
 		klon.querySelector("video").alt = produkt.navn;
 

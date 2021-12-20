@@ -24,6 +24,11 @@ figure {
   margin: 0;
 }
 
+#produkt_pris{
+font-weight: bold;
+font-size: clamp(0.9rem, 0.6846rem + 0.9846vw, 1.3rem) !important;
+}
+
 #produkt_container {
   display: grid;
 }
@@ -255,7 +260,7 @@ function visProdukt(){
 	document.querySelector(".produktbilleder").alt = produkt.navn;
 	document.querySelector("#produkt_beskrivelse").textContent = produkt.beskrivelse;
 	document.querySelector("#produkt_egenskab").textContent = produkt.egenskab;
-	document.querySelector("#produkt_pris").textContent = produkt.pris;		
+	document.querySelector("#produkt_pris").innerHTML = produkt.pris + ",-";		
 	document.querySelector("#produkt_vaegt").textContent = produkt.vaegt;
 	document.querySelector("#produkt_tip").textContent = produkt.tip;
 }
