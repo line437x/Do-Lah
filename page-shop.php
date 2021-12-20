@@ -20,7 +20,7 @@ video {
   width: 100%;
   height: auto;
   padding: 0;
-  border: solid 1px black;
+  border: solid 0.5px black;
 }
 
 #indledning{
